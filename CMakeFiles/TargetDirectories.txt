@@ -1,0 +1,3 @@
+/home/altar/Desktop/Projects/Cell Library/CMakeFiles/rebuild_cache.dir
+/home/altar/Desktop/Projects/Cell Library/CMakeFiles/edit_cache.dir
+/home/altar/Desktop/Projects/Cell Library/CMakeFiles/cells.elf.dir

@@ -1,0 +1,88 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/altar/Desktop/Projects/Cell Library/src/c2Cell.cpp
+c2World.h
+/home/altar/Desktop/Projects/Cell Library/src/c2World.h
+c2Collisions.h
+/home/altar/Desktop/Projects/Cell Library/src/c2Collisions.h
+c2Cell.h
+/home/altar/Desktop/Projects/Cell Library/src/c2Cell.h
+
+/home/altar/Desktop/Projects/Cell Library/src/c2Collisions.cpp
+c2World.h
+/home/altar/Desktop/Projects/Cell Library/src/c2World.h
+c2Collisions.h
+/home/altar/Desktop/Projects/Cell Library/src/c2Collisions.h
+c2Cell.h
+/home/altar/Desktop/Projects/Cell Library/src/c2Cell.h
+
+/home/altar/Desktop/Projects/Cell Library/src/c2World.cpp
+c2World.h
+/home/altar/Desktop/Projects/Cell Library/src/c2World.h
+c2Collisions.h
+/home/altar/Desktop/Projects/Cell Library/src/c2Collisions.h
+c2Cell.h
+/home/altar/Desktop/Projects/Cell Library/src/c2Cell.h
+
+/home/altar/Desktop/Projects/Cell Library/src/testing.cpp
+iostream
+-
+chrono
+-
+stdio.h
+-
+time.h
+-
+unistd.h
+-
+c2Math.h
+/home/altar/Desktop/Projects/Cell Library/src/c2Math.h
+c2World.h
+/home/altar/Desktop/Projects/Cell Library/src/c2World.h
+c2Collisions.h
+/home/altar/Desktop/Projects/Cell Library/src/c2Collisions.h
+c2Cell.h
+/home/altar/Desktop/Projects/Cell Library/src/c2Cell.h
+
+include/c2Cell.h
+vector
+-
+c2Math.h
+include/c2Math.h
+c2Collisions.h
+include/c2Collisions.h
+
+include/c2Collisions.h
+vector
+-
+cmath
+-
+algorithm
+-
+c2Math.h
+include/c2Math.h
+
+include/c2Math.h
+math.h
+-
+bitset
+-
+vector
+-
+iostream
+-
+
+include/c2World.h
+vector
+-
+algorithm
+-
+c2Math.h
+include/c2Math.h
+

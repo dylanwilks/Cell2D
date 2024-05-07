@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra -Wpedantic                     -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl                     -O0 -g   CMakeFiles/test.elf.dir/src/c2World.cpp.o CMakeFiles/test.elf.dir/src/c2Collisions.cpp.o CMakeFiles/test.elf.dir/src/c2Cell.cpp.o CMakeFiles/test.elf.dir/src/testing.cpp.o  -o test.elf 

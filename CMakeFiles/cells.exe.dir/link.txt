@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -lglfw3 -lGL -lX11 -lpthread -lpthread -lXrandr -lXi -ldl -O3 -g   CMakeFiles/cells.exe.dir/src/c2World.cpp.o CMakeFiles/cells.exe.dir/src/c2Collisions.cpp.o CMakeFiles/cells.exe.dir/src/c2Cell.cpp.o CMakeFiles/cells.exe.dir/src/testing.cpp.o  -o cells.exe 

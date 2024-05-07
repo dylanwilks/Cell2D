@@ -1,0 +1,36 @@
+TARGET := cells.exe
+
+# directories 
+SRC_DIR := src
+OBJ_DIR := obj
+
+#files
+SRC := $(wildcard $(SRC_DIR)/*.cpp)
+OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+
+# compiler flags
+# -g --Enable debugging
+# -Wall --Turn on all warnings
+CXX := g++
+CXXFLAGS := -Wall
+CPPFLAGS := -Iinclude -MMD -MP
+
+all: $(TARGET)
+.PHONY: all
+
+# linking
+$(TARGET): $(OBJ)
+	$(CXX) $^ -o $@
+
+# compiling
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)   # checks if $(OBJ_DIR) exists first
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+
+# create directory
+$(OBJ_DIR):
+	mkdir -p $@
+
+clean:
+	@$(RM) -rv $(OBJ_DIR) # @ disables the command echoing
+
+-include $(OBJ:.o=.d)
