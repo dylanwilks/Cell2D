@@ -1,42 +1,18 @@
 #include "c2World.h"
-#include "c2Collisions.h"
 #include "c2Cell.h"
+#include "c2Collision.h"
 
 c2Cell::c2Cell(const c2CellDef& def, c2World* world)
 {
-    velocity.SetZero();
-    in_tree = false;
-    handled = false;
-    moved = false;
-
-    bool in_bounds = (floor(position.x) >= 0 
-                   && floor(position.x) <= world->GetLength() - 1
-                   && floor(position.y) >= 0 
-                   && floor(position.y) <= world->GetHeight() - 1);
-
-    if(in_bounds) { in_world = true; }
-    else { in_world = false; }
-
-    this->position = def.position; //copy c2CellDef values
-    this->velocity = def.velocity;
+    this->cell_callback = def.cell_callback;
+    this->position = def.position;
 
     SetColor(WHITE);
-
-    this->type = def.type;
-    this->gravityScale = def.gravityScale;
-    this->active = def.active;
-
-    this->world = world; 
-    
-    parent = nullptr;
 }
 
 c2Cell::~c2Cell()
 {
-    if(in_tree)
-    {
-        leaves[0]->RemoveCell(this);
-    } 
+    nodes[0]->RemoveCell(this);
 }
 
 void c2Cell::SetColor(int color)

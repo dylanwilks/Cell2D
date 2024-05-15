@@ -30,14 +30,17 @@ struct c2Vector
     }
 
     //Inverts the elements
-    void operator -()
+    c2Vector operator -() const
     {
-        x = -x;
-        y = -y;     
+        c2Vector v;
+        v.x = -x;
+        v.y = -y;     
+
+        return v;
     }
 
     //Add 2 vectors, similar to Obj1.Add(Obj2)
-    c2Vector operator + (const c2Vector& v)
+    c2Vector operator + (const c2Vector& v) const
     {
         c2Vector obj;
         obj.x = this->x + v.x;
@@ -47,7 +50,7 @@ struct c2Vector
     }
 
     //Subtracts 2 vectors
-    c2Vector operator - (const c2Vector& v)   
+    c2Vector operator - (const c2Vector& v) const
     {                                                
         c2Vector obj;                                
         obj.x = this->x - v.x;                       
@@ -77,22 +80,22 @@ struct c2Vector
         y *= a;
     }
 
-    bool operator < (const c2Vector& v)
+    bool operator < (const c2Vector& v) const
     {
         return x < v.x && y < v.y;
     }
 
-    bool operator <= (const c2Vector& v)
+    bool operator <= (const c2Vector& v) const
     {
         return x <= v.x && y <= v.y;
     }
 
-    bool operator > (const c2Vector& v)
+    bool operator > (const c2Vector& v) const
     {
         return x > v.x && y > v.y;
     }
 
-    bool operator >= (const c2Vector& v)
+    bool operator >= (const c2Vector& v) const
     {
         return x >= v.x && y >= v.y;
     }
@@ -104,7 +107,7 @@ struct c2Vector
     }
 
     //Returns normalized version of vector (for direction)
-    c2Vector Normalize()
+    c2Vector Normalize() const
     {
         c2Vector v;
         float mag = this->Magnitude();
@@ -115,7 +118,7 @@ struct c2Vector
     }
 
     //Returns the floor of the components
-    c2Vector Floor()
+    c2Vector Floor() const
     {
         c2Vector m_v;
         m_v.Set(floor(this->x), floor(this->y));
@@ -128,44 +131,44 @@ struct c2Vector
 };
 
 //For printing vectors
-inline std::ostream& operator << (std::ostream& out, const c2Vector& vector)
+inline std::ostream& operator << (std::ostream& out, const c2Vector& vector) 
 {
     return out << "(" << vector.x << ", " << vector.y << ")";
 }
 
 //Add a fixed value to both components of the vector then return another
-inline c2Vector operator + (const c2Vector& v, float f)
+inline c2Vector operator + (const c2Vector& v, float f) 
 {
     return c2Vector(v.x + f, v.y + f);
 }
 
 //Subtract both components with a fixed value then return another
-inline c2Vector operator - (const c2Vector& v, float f)
+inline c2Vector operator - (const c2Vector& v, float f) 
 {
     return c2Vector(v.x - f, v.y - f);
 }
 
 //Scale the vector then return another
-inline c2Vector operator * (const c2Vector& v, float f)
+inline c2Vector operator * (const c2Vector& v, float f) 
 {
     return c2Vector(v.x * f, v.y * f);
 }
 
 //Scale the vector (division) then return another
-inline c2Vector operator / (const c2Vector& v, float f)
+inline c2Vector operator / (const c2Vector& v, float f) 
 {
     return c2Vector(v.x / f, v.y / f);
 }
 
 //Determines if 2 vectors are unequal
-inline bool operator != (const c2Vector& v1, const c2Vector& v2)
+inline bool operator != (const c2Vector& v1, const c2Vector& v2) 
 {
     if(v1.x != v2.x || v1.y != v2.y) { return true; }
     else { return false; }
 }
 
 //Determines if 2 vectors are equal
-inline bool operator == (const c2Vector& v1, const c2Vector& v2)
+inline bool operator == (const c2Vector& v1, const c2Vector& v2) 
 {
     if(v1.x == v2.x && v1.y == v2.y) { return true; }
     else { return false; }
@@ -184,7 +187,7 @@ struct c2Matrix22
     }
 
     //Add another matrix on
-    c2Matrix22 operator + (const c2Matrix22& mat1)
+    c2Matrix22 operator + (const c2Matrix22& mat1) const
     {
         c2Matrix22 mat;
         mat.Set(this->ex + mat1.ex,
@@ -194,7 +197,7 @@ struct c2Matrix22
     }
 
     //Substract from another matrix
-    c2Matrix22 operator - (const c2Matrix22& mat1)
+    c2Matrix22 operator - (const c2Matrix22& mat1) const
     {
         c2Matrix22 mat;
         mat.Set(this->ex - mat1.ex,
@@ -204,7 +207,7 @@ struct c2Matrix22
     }
 
     //Scale the matrix by a fixed value
-    c2Matrix22 operator * (float val)
+    c2Matrix22 operator * (float val) const
     {
         c2Matrix22 mat;
 
@@ -236,13 +239,13 @@ struct c2Matrix22
     }
 
     //Return the determinant of the matrix
-    float det()
+    float det() const
     {
         return ex.x * ey.y - ey.x * ex.y;
     }
 
     //Return the inverse of the matrix
-    c2Matrix22 GetInverse()
+    c2Matrix22 GetInverse() const
     {
         c2Matrix22 mat;
 
@@ -264,7 +267,7 @@ struct c2Matrix22
         return mat;
     }
 
-    c2Vector Solve(const c2Vector& v)
+    c2Vector Solve(const c2Vector& v) const
     {
         c2Vector product;
         product.Set(ex.x * v.x + ey.x * v.y,
@@ -288,7 +291,7 @@ inline c2Matrix22 operator + (const c2Matrix22& mat1, float val)
 }
 
 //Subtract a fixed constant to all the elements
-inline c2Matrix22 operator - (const c2Matrix22& mat1, float val)
+inline c2Matrix22 operator - (const c2Matrix22& mat1, float val) 
 {
     c2Matrix22 mat;
     mat.Set(mat1.ex - val,
@@ -298,7 +301,7 @@ inline c2Matrix22 operator - (const c2Matrix22& mat1, float val)
 }
 
 //Scale a matrix by a constant
-inline c2Matrix22 operator * (const c2Matrix22& mat1, float val)
+inline c2Matrix22 operator * (const c2Matrix22& mat1, float val) 
 {
     c2Matrix22 mat;
     mat.Set(mat1.ex * val,
@@ -308,7 +311,7 @@ inline c2Matrix22 operator * (const c2Matrix22& mat1, float val)
 }
 
 //Divide the elements of a matrix by a constant
-inline c2Matrix22 operator / (const c2Matrix22& mat1, float val)
+inline c2Matrix22 operator / (const c2Matrix22& mat1, float val) 
 {
     c2Matrix22 mat;
     mat.Set(mat1.ex / val,
